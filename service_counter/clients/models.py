@@ -7,6 +7,7 @@ class Client(models.Model):
     address = models.CharField(max_length=255, verbose_name='Адрес')
     inn = models.CharField(max_length=12, verbose_name='ИНН')
     ogrn = models.CharField(max_length=13, verbose_name='ОГРН')
+    ceo = models.CharField(max_length=100, verbose_name='Исполнительный орган')
     phone = models.CharField(max_length=20, verbose_name='Телефон')
     email = models.EmailField(verbose_name='Email')
     agent = models.ForeignKey('ClientAgent', on_delete=models.PROTECT, null=True, verbose_name='Представитель')
@@ -45,6 +46,7 @@ class Agreement(models.Model):
     date = models.DateField(verbose_name='Дата договора')
     description = models.CharField(max_length=255, verbose_name='Описание')
     client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, verbose_name='Клиент')
+    signatory = models.CharField(max_length=100, verbose_name='Подписант')
     time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
     time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения')
 
