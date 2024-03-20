@@ -39,6 +39,8 @@ class ClientAgent(models.Model):
 
 class Agreement(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование договора')
+    number = models.CharField(max_length=100, verbose_name='Номер договора')
+    date = models.DateField(verbose_name='Дата договора')
     description = models.CharField(max_length=255, verbose_name='Описание')
     client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, verbose_name='Клиент')
     time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
