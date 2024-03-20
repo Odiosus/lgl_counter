@@ -1,6 +1,6 @@
 from django.db import models
 
-from clients.models import Clients
+from clients.models import Client, Agreement
 
 
 class Services(models.Model):
@@ -10,7 +10,8 @@ class Services(models.Model):
     time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения')
     services_status = models.BooleanField(default=True, verbose_name='Статус')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
-    clients = models.ForeignKey(Clients, on_delete=models.CASCADE, null=True, verbose_name='Клиент')
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, verbose_name='Клиент')
+    agreement = models.ForeignKey(Agreement, on_delete=models.PROTECT, null=True, verbose_name='Договор')
 
     class Meta:
         verbose_name = 'Услуги'
