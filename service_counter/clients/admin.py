@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from clients.models import Client, Agreement, ClientAgent
+
+admin.site.register(Client, Agreement, ClientAgent)

@@ -12,8 +12,8 @@ class Client(models.Model):
     email = models.EmailField(verbose_name='Email')
     agent = models.ForeignKey('ClientAgent', on_delete=models.PROTECT, null=True, verbose_name='Представитель')
     agreement = models.ForeignKey('Agreement', on_delete=models.PROTECT, null=True, verbose_name='Договор')
-    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
-    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения')
+    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления клиента')
+    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения записи')
 
     class Meta:
         verbose_name = 'Клиент'
@@ -29,8 +29,8 @@ class ClientAgent(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     surname = models.CharField(max_length=100, verbose_name='Фамилия')
     patronymic = models.CharField(max_length=100, verbose_name='Отчество')
-    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
-    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения')
+    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления представителя')
+    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения записи')
 
     class Meta:
         verbose_name = 'Представитель'
@@ -47,8 +47,8 @@ class Agreement(models.Model):
     description = models.CharField(max_length=255, verbose_name='Описание')
     client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, verbose_name='Клиент')
     signatory = models.CharField(max_length=100, verbose_name='Подписант')
-    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
-    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения')
+    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время создания записи')
+    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения записи')
 
     class Meta:
         verbose_name = 'Договор'
